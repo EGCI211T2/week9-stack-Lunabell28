@@ -7,9 +7,8 @@
 
 #ifndef node_h
 #define node_h
-
 class NODE{
-    char data;  // Changed from int to char
+    char data;
     NODE *nextPtr;
 public:
     NODE(char);
@@ -23,23 +22,32 @@ typedef NODE* NodePtr;
 
 NODE::NODE(char x){
     data=x;
-    nextPtr=NULL;
+    nextPtr = NULL;
+    //pPtr =NULL; not using doubly
 }
-
 NODE* NODE::get_next(){
     return nextPtr;
+
 }
 
 char NODE::get_value(){
     return data;
+
 }
+
 
 void NODE::set_next(NODE *t){
-    nextPtr=t;
+     nextPtr=t;
+
+}
+NODE::~NODE(){
+     // cout<<"deleting "<<data<<endl;
+
 }
 
-NODE::~NODE(){
-    // Removed cout - no output during deletion
-}
+
+
+
+
 
 #endif

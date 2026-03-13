@@ -1,46 +1,28 @@
 #include<iostream>
-#include<cstring>
 using namespace std;
 
 #include "stack.h"
 
 int main(int argc, char **argv){
-    int i, j;
-    
-    /* Exercise 1 - Bracket Matching */
-    for(i=1; i<argc; i++){
-        Stack s;
-        bool valid = true;
-        
-        for(j=0; j<strlen(argv[i]); j++){
-            if(argv[i][j]=='[' || argv[i][j]=='{' || argv[i][j]=='('){
-                s.push(argv[i][j]);
-            }
-            else if(argv[i][j]==']' || argv[i][j]=='}' || argv[i][j]==')'){
-                if(s.isEmpty()){
-                    valid = false;
-                    break;
-                }
-                
-                char x = s.pop();
-                
-                // Check if brackets match
-                if((argv[i][j]==']' && x!='[') || 
-                   (argv[i][j]=='}' && x!='{') ||
-                   (argv[i][j]==')' && x!='(')){
-                    valid = false;
-                    break;
-                }
-            }
-        }
-        
-        // Check if all brackets were closed
-        if(!s.isEmpty()){
-            valid = false;
-        }
-        
-        cout << "argv " << i << " " << (valid ? "correct" : "incorrect") << endl;
-    }
+    Stack s;
+     s.push(5);
+      s.push(1);
+      s.push(7);
+      s.pop();
+      s.push(6);
+      s.pop();
 
-    return 0;
+ /*
+  Exercise 1*/
+    /*
+    int i;
+    for(i=1;i<argc;i++){
+      //  if(  x)  s.pop();
+        else s.push(atoi(argv[i]));
+    }
+     */
+
+
+
+   return 0;
 }

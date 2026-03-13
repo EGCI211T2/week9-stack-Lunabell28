@@ -1,55 +1,68 @@
+
 #ifndef stack_h
 #define stack_h
 #include "node.h"
-#include <iostream>
-using namespace std;
-
 class Stack {
-    NodePtr top;
-    int size;
+	NodePtr top;
+	int size;
+
 public:
     void push(char);
+    // int pop();
     char pop();
     Stack();
     ~Stack();
     bool isEmpty();
 };
 
+
 void Stack::push(char x){
     NodePtr new_node = new NODE(x);
-    if(new_node){
-        new_node->set_next(top);
+    if(new_node)
+    {
+        new_node -> set_next(top); // set next pointer to the top   
         top = new_node;
         size++;
     }
+ 
+         // Left missing for exercises…
+    
 }
 
 char Stack::pop(){
-    if(isEmpty()){
-        return '\0';  // Return null character if stack is empty
-    }
-    NodePtr t = top;
-    char value = t->get_value();
-    top = t->get_next();
-    size--;
-    cout << value;  // Print the value during pop
-    delete t;
-    return value;
-}
+        NodePtr t=top; // set temporary = top
+        char value; 
+        value=t->get_value(); // return removed data
+    // Left missing part for exercises
 
-Stack::Stack(){
+        top = top->get_next(); // set top to the next stack
+        size--; // reduce size
+        delete t; // delete t from the stack
+        return value;
+	//be careful of the empty stack!!!
+    }
+
+Stack::Stack()
+{
+    //initialize stack
     top = NULL;
     size = 0;
-}
 
-Stack::~Stack(){
-    while(!isEmpty()){
+    
+}
+Stack::~Stack()
+{
+    //delete all remaning stack (i.e. pop all) 
+    while (top != NULL)
+    {
         pop();
     }
 }
 
-bool Stack::isEmpty(){
-    return top == NULL;
+bool Stack::isEmpty() 
+{
+    return (top == NULL);
 }
+
 
 #endif
